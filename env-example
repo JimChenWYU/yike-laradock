@@ -11,7 +11,7 @@ APP_CODE_PATH_HOST=../
 APP_CODE_PATH_CONTAINER=/var/www:cached
 
 # Choose storage path on your machine. For all storage systems
-DATA_PATH_HOST=~/.laradock/data
+DATA_PATH_HOST=~/.yike/data
 
 ### Drivers ################################################
 
@@ -30,12 +30,12 @@ COMPOSE_FILE=docker-compose.yml
 COMPOSE_PATH_SEPARATOR=:
 
 # Define the prefix of container names. This is useful if you have multiple projects that use laradock to have seperate containers per project.
-COMPOSE_PROJECT_NAME=laradock
+COMPOSE_PROJECT_NAME=yike
 
 ### PHP Version ###########################################
 
 # Select a PHP version of the Workspace and PHP-FPM containers (Does not apply to HHVM). Accepted values: 7.2 - 7.1 - 7.0 - 5.6
-PHP_VERSION=7.2
+PHP_VERSION=7.1
 
 ### Phalcon Version ###########################################
 
@@ -55,7 +55,7 @@ DOCKER_HOST_IP=10.0.75.1
 ### Remote Interpreter ####################################
 
 # Choose a Remote Interpreter entry matching name. Default is `laradock`
-PHP_IDE_CONFIG=serverName=laradock
+PHP_IDE_CONFIG=serverName=yike
 
 ### Windows Path ##########################################
 
@@ -65,7 +65,7 @@ COMPOSE_CONVERT_WINDOWS_PATHS=1
 ### Environment ###########################################
 
 # If you need to change the sources (i.e. to China), set CHANGE_SOURCE to true
-CHANGE_SOURCE=false
+CHANGE_SOURCE=true
 
 ### Docker Sync ###########################################
 
@@ -88,7 +88,7 @@ WORKSPACE_YARN_VERSION=latest
 WORKSPACE_INSTALL_NPM_GULP=true
 WORKSPACE_INSTALL_NPM_BOWER=false
 WORKSPACE_INSTALL_NPM_VUE_CLI=true
-WORKSPACE_INSTALL_PHPREDIS=true
+WORKSPACE_INSTALL_PHPREDIS=false
 WORKSPACE_INSTALL_WORKSPACE_SSH=false
 WORKSPACE_INSTALL_SUBVERSION=false
 WORKSPACE_INSTALL_XDEBUG=false
@@ -135,8 +135,8 @@ PHP_FPM_INSTALL_ZIP_ARCHIVE=true
 PHP_FPM_INSTALL_BCMATH=true
 PHP_FPM_INSTALL_MYSQLI=true
 PHP_FPM_INSTALL_INTL=true
-PHP_FPM_INSTALL_IMAGEMAGICK=true
-PHP_FPM_INSTALL_OPCACHE=true
+PHP_FPM_INSTALL_IMAGEMAGICK=false
+PHP_FPM_INSTALL_OPCACHE=false
 PHP_FPM_INSTALL_IMAGE_OPTIMIZERS=true
 PHP_FPM_INSTALL_PHPREDIS=true
 PHP_FPM_INSTALL_MEMCACHED=false
@@ -168,6 +168,7 @@ PHP_FPM_FAKETIME=-0
 PHP_WORKER_INSTALL_PGSQL=false
 PHP_WORKER_INSTALL_BCMATH=false
 PHP_WORKER_INSTALL_SOAP=false
+PHP_WORKER_LOG_PATH=./logs/php-worker/
 
 ### NGINX #################################################
 
@@ -192,17 +193,19 @@ APACHE_DOCUMENT_ROOT=/var/www/
 
 ### MYSQL #################################################
 
-MYSQL_VERSION=latest
-MYSQL_DATABASE=default
+MYSQL_VERSION=5.7
+MYSQL_DATABASE=api_yike_io
 MYSQL_USER=default
 MYSQL_PASSWORD=secret
 MYSQL_PORT=3306
 MYSQL_ROOT_PASSWORD=root
 MYSQL_ENTRYPOINT_INITDB=./mysql/docker-entrypoint-initdb.d
+MYSQL_LOG_PATH=./logs/mysql/
 
 ### REDIS #################################################
 
 REDIS_PORT=6379
+REDIS_LOG_PATH=./logs/redis/
 
 ### Percona ###############################################
 
@@ -248,6 +251,7 @@ RABBITMQ_DEFAULT_PASS=guest
 
 ELASTICSEARCH_HOST_HTTP_PORT=9200
 ELASTICSEARCH_HOST_TRANSPORT_PORT=9300
+ELASTICSEARCH_LOG_PATH=./logs/elasticsearch/
 
 ### KIBANA ################################################
 
